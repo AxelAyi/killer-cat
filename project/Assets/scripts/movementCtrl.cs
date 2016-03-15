@@ -3,8 +3,6 @@ using System.Collections;
 
 public class movementCtrl : MonoBehaviour {
 	public float maxSpeed = 10.0f;
-	public float maxSpeedBreak = 5f;
-	public float velocityX;
 
 	bool facingRight = true;
 
@@ -22,7 +20,7 @@ public class movementCtrl : MonoBehaviour {
 		float move = Input.GetAxis("Horizontal");
 		anim.SetFloat("speed", Mathf.Abs(move));
 		float absVelocityX = Mathf.Abs(move) * maxSpeed;
-		velocityX = facingRight ? absVelocityX : -absVelocityX;
+		float velocityX = facingRight ? absVelocityX : -absVelocityX;
 		rigidbody.velocity = new Vector2(velocityX, rigidbody.velocity.y);
 
 		if ((move > 0 && !facingRight) || (move < 0 && facingRight)) {
